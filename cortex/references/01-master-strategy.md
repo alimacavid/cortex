@@ -1,5 +1,42 @@
 # 01 - Master Strategy
 
+## The Goal
+LandEx Holding extra income -> invest in properties -> development building -> rental income.
+Complete beneficial commercial empire/ecosystem.
+
+## 6 Companies Under LandEx Holding
+
+| Company | Role |
+|---|---|
+| LandEx Construction | Renovate properties internally |
+| Landex Demolition | Site prep, hazmat abatement |
+| Livo Services | Maintain and turn over properties |
+| Vorx | Supply all workers to every subsidiary |
+| STR Company (needs naming) | Manage short-term rentals (may be part of real estate co) |
+| Javids Pictures | Supply all marketing material |
+
+## Phased Growth
+Phase 1: Get Construction operational. Demolition has Ascentra pipeline. Livo in Cortex R&D.
+Phase 2: Acquire first rental property. Renovate with Construction. STR manages it.
+Phase 3: Scale portfolio. Vorx feeds workers. STR short-term, Livo long-term care.
+Phase 4: Javids Pictures for marketing at scale. Passive rental income + appreciation.
+
+## Group Synergies
+Construction -> renovates all properties. Gets labor from Vorx, site prep from Demolition.
+Demolition -> site clearing, hazmat. Gets labor from Vorx.
+Livo -> property maintenance, turnovers. Gets workers from Vorx, turnover jobs from STR.
+Vorx -> workers to EVERY subsidiary.
+STR -> rental income, guest management. Gets cleaning from Livo, photos from Javids.
+Javids -> marketing and brand content for all businesses.
+
+## Priority Stack
+1. Construction - revenue engine + renovation
+2. Demolition - already operational
+3. STR / Real Estate - direct rental income
+4. Livo - property services
+5. Vorx - people infrastructure
+6. Javids Pictures - marketing at scale# 01 - Master Strategy
+
 ## Landex Group - Strategic Architecture
 
 Parent: Landex Group (Javids Holding)
