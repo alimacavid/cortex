@@ -4,160 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CORTEX — LandEx Command</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0A0A0B;
-  --bg2:#111113;
-  --bg3:#18181B;
-  --border:#2A2A2F;
-  --border2:#3A3A42;
-  --purple:#7C3AED;
-  --purple-soft:#4C1D95;
-  --lime:#C8E600;
-  --lime-dim:#A0B800;
-  --text:#F4F4F5;
-  --text2:#A1A1AA;
-  --text3:#71717A;
-  --success:#22C55E;
-  --warning:#F59E0B;
-  --danger:#EF4444;
-  --info:#3B82F6;
+  --bg:#F5F5F3;--surface:#FFFFFF;--surface2:#F9F9F8;
+  --border:#E4E4E0;--border2:#D0D0CA;--purple:#6D28D9;
+  --lime:#5A6E00;--lime-bg:#F0F4D0;--text:#1A1A18;
+  --text2:#5C5C58;--text3:#9C9C96;--success:#15803D;
+  --success-bg:#DCFCE7;--warning:#92400E;--warning-bg:#FEF3C7;
+  --danger:#991B1B;--danger-bg:#FEE2E2;
 }
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;font-size:15px}
 a{color:inherit;text-decoration:none}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:100}
-.topbar-left{display:flex;align-items:center;gap:1.5rem}
-.logo{font-family:'DM Mono',monospace;font-weight:500;font-size:1rem;letter-spacing:.15em;color:var(--lime)}
-.logo span{color:var(--text3);font-weight:300}
-.tagline{font-size:.7rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;border-left:1px solid var(--border2);padding-left:1.5rem}
-.topbar-right{display:flex;align-items:center;gap:1rem}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 6px var(--success)}
-.status-label{font-size:.75rem;color:var(--text3);font-family:'DM Mono',monospace}
-.time{font-size:.75rem;color:var(--text2);font-family:'DM Mono',monospace}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:52px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:100}
+.logo{font-family:'DM Mono',monospace;font-weight:500;font-size:.95rem;letter-spacing:.1em;color:var(--purple)}
+.logo span{color:var(--text3);font-weight:400}
+.topbar-meta{display:flex;align-items:center;gap:1.5rem}
+.status-pill{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--success);background:var(--success-bg);padding:.3rem .7rem;border-radius:99px;font-family:'DM Mono',monospace}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--success)}
+.clock{font-size:.72rem;color:var(--text3);font-family:'DM Mono',monospace}
 .layout{display:flex;flex:1}
-.sidebar{width:220px;border-right:1px solid var(--border);background:var(--bg2);padding:1.5rem 0;flex-shrink:0}
+.sidebar{width:210px;border-right:1px solid var(--border);background:var(--surface);padding:1.25rem 0;flex-shrink:0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto}
 .main{flex:1;padding:2rem}
-.nav-section{margin-bottom:2rem}
-.nav-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);padding:0 1.25rem;margin-bottom:.75rem;font-family:'DM Mono',monospace}
-.nav-item{display:flex;align-items:center;gap:.75rem;padding:.55rem 1.25rem;font-size:.85rem;color:var(--text2);cursor:pointer;border-left:2px solid transparent}
-.nav-item.active{color:var(--lime);border-left-color:var(--lime);background:rgba(200,230,0,.05)}
-.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0}
-.nav-item.active .nav-dot{background:var(--lime)}
-.page-header{margin-bottom:2rem}
-.page-title{font-size:1.4rem;font-weight:500;margin-bottom:.3rem}
-.page-sub{font-size:.85rem;color:var(--text3)}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
-.stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem}
-.stat-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:.5rem}
-.stat-value{font-size:1.6rem;font-weight:500;font-family:'DM Mono',monospace}
-.stat-sub{font-size:.75rem;color:var(--text3);margin-top:.25rem}
-.stat-accent{color:var(--lime)}
-.section{margin-bottom:2.5rem}
-.section-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
-.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.company-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;overflow:hidden;margin-bottom:0}
-.company-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--purple))}
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
-.card-icon{width:36px;height:36px;border-radius:8px;background:rgba(124,58,237,.15);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;color:var(--accent,var(--purple))}
-.badge{font-size:.65rem;padding:.25rem .6rem;border-radius:99px;font-family:'DM Mono',monospace}
-.badge-live{background:rgba(34,197,94,.1);color:var(--success);border:1px solid rgba(34,197,94,.2)}
-.badge-dev{background:rgba(245,158,11,.1);color:var(--warning);border:1px solid rgba(245,158,11,.2)}
-.badge-planned{background:rgba(113,113,122,.1);color:var(--text3);border:1px solid var(--border)}
-.card-name{font-size:1rem;font-weight:500;margin-bottom:.2rem}
-.card-desc{font-size:.78rem;color:var(--text3);line-height:1.4;margin-bottom:1rem}
-.card-links{display:flex;gap:.5rem;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;padding:.35rem .75rem;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
-.btn-primary{border-color:rgba(200,230,0,.3);color:var(--lime);background:rgba(200,230,0,.05)}
-.items-list{display:flex;flex-direction:column;gap:.5rem}
-.item{display:flex;align-items:center;gap:1rem;padding:.85rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
-.item-priority{width:4px;height:24px;border-radius:2px;flex-shrink:0}
-.p-high{background:var(--danger)}
-.p-med{background:var(--warning)}
-.p-low{background:var(--info)}
-.item-text{flex:1;font-size:.85rem}
-.item-tag{font-size:.65rem;padding:.2rem .55rem;border-radius:5px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-family:'DM Mono',monospace}
-.item-tag.tag-livo{color:#7C3AED;border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.08)}
-.item-tag.tag-cortex{color:var(--lime);border-color:rgba(200,230,0,.3);background:rgba(200,230,0,.08)}
-footer{border-top:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg2)}
-.footer-text{font-size:.7rem;color:var(--text3);font-family:'DM Mono',monospace}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.pulse{animation:pulse 2s ease-in-out infinite}
+.nav-group{margin-bottom:1.75rem}
+.nav-group-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 1rem;margin-bottom:.5rem;font-family:'DM Mono',monospace}
+.nav-link{display:block;padding:.45rem 1rem;font-size:.85rem;color:var(--text2);border-left:2px solid transparent}
+.nav-link:hover{color:var(--text);background:var(--bg);border-left-color:var(--border2)}
+.nav-link.active{color:var(--purple);border-left-color:var(--purple);background:rgba(109,40,217,.04);font-weight:500}
+.page-header{margin-bottom:1.75rem}
+.page-title{font-size:1.25rem;font-weight:600;margin-bottom:.2rem}
+.page-sub{font-size:.82rem;color:var(--text3)}
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin-bottom:2rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem}
+.stat-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:.3rem}
+.stat-value{font-size:1.5rem;font-weight:600;font-family:'DM Mono',monospace}
+.stat-sub{font-size:.72rem;color:var(--text3);margin-top:.15rem}
+.section{margin-bottom:2rem}
+.section-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.section-title{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'DM Mono',monospace;white-space:nowrap}
+.section-line{flex:1;height:1px;background:var(--border)}
+.company-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.company-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;overflow:hidden}
+.company-card:hover{border-color:var(--border2);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.accent-bar{position:absolute;top:0;left:0;right:0;height:3px}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.9rem}
+.card-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500}
+.badge{font-size:.62rem;padding:.2rem .55rem;border-radius:99px;font-family:'DM Mono',monospace;font-weight:500}
+.badge-live{background:var(--success-bg);color:var(--success)}
+.badge-dev{background:var(--warning-bg);color:var(--warning)}
+.badge-planned{background:var(--bg);color:var(--text3);border:1px solid var(--border)}
+.card-name{font-size:.95rem;font-weight:600;margin-bottom:.15rem}
+.card-desc{font-size:.78rem;color:var(--text2);line-height:1.45;margin-bottom:1rem}
+.card-actions{display:flex;flex-direction:column;gap:.4rem}
+.action-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;border-radius:7px;border:1px solid var(--border);background:var(--surface2);font-size:.78rem;color:var(--text2);text-decoration:none;width:100%}
+.action-btn:hover{border-color:var(--border2);background:var(--surface);color:var(--text)}
+.action-btn.primary{border-color:rgba(109,40,217,.25);background:rgba(109,40,217,.04);color:var(--purple)}
+.action-btn.primary:hover{border-color:var(--purple);background:rgba(109,40,217,.08)}
+.action-btn.green{border-color:rgba(21,128,61,.25);background:var(--success-bg);color:var(--success)}
+.btn-label{display:flex;align-items:center;gap:.45rem}
+.btn-arrow{font-size:.7rem;opacity:.5}
+.items-list{display:flex;flex-direction:column;gap:.4rem}
+.item-row{display:flex;align-items:center;gap:.85rem;padding:.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.item-row:hover{border-color:var(--border2)}
+.priority-bar{width:3px;height:20px;border-radius:2px;flex-shrink:0}
+.ph{background:#EF4444}.pm{background:#F59E0B}.pl{background:#3B82F6}
+.item-text{flex:1;font-size:.83rem}
+.item-co{font-size:.62rem;padding:.2rem .5rem;border-radius:5px;font-family:'DM Mono',monospace;border:1px solid var(--border);background:var(--bg);color:var(--text3)}
+.item-co.livo{color:var(--purple);border-color:rgba(109,40,217,.2);background:rgba(109,40,217,.04)}
+.item-co.cortex{color:var(--lime);border-color:rgba(90,110,0,.2);background:var(--lime-bg)}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.quick-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem}
+.quick-title{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:.7rem}
+.quick-links{display:flex;flex-direction:column;gap:.35rem}
+.quick-link{display:flex;align-items:center;justify-content:space-between;padding:.45rem .65rem;border-radius:6px;border:1px solid var(--border);font-size:.78rem;color:var(--text2);text-decoration:none;background:var(--surface2)}
+.quick-link:hover{border-color:var(--border2);color:var(--text);background:var(--surface)}
+footer{border-top:1px solid var(--border);padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--surface)}
+.footer-text{font-size:.68rem;color:var(--text3);font-family:'DM Mono',monospace}
 </style>
 </head>
 <body>
 <div class="topbar">
-  <div class="topbar-left">
-    <div class="logo">CORTEX <span>/ LandEx</span></div>
-    <div class="tagline">Command &amp; Control</div>
-  </div>
-  <div class="topbar-right">
-    <div class="status-dot pulse"></div>
-    <div class="status-label">All systems operational</div>
-    <div class="time" id="clock">--:--</div>
+  <div class="logo">CORTEX <span>/ LandEx Group</span></div>
+  <div class="topbar-meta">
+    <div class="status-pill"><div class="status-dot"></div>Operational</div>
+    <div class="clock" id="clock">--:--</div>
   </div>
 </div>
 <div class="layout">
   <nav class="sidebar">
-    <div class="nav-section">
-      <div class="nav-label">Overview</div>
-      <div class="nav-item active"><div class="nav-dot"></div>Dashboard</div>
-      <div class="nav-item"><div class="nav-dot"></div>Open Items</div>
+    <div class="nav-group">
+      <div class="nav-group-label">Overview</div>
+      <a href="#dashboard" class="nav-link active">Dashboard</a>
+      <a href="#open-items" class="nav-link">Open Items</a>
+      <a href="#quick-access" class="nav-link">Quick Access</a>
     </div>
-    <div class="nav-section">
-      <div class="nav-label">Companies</div>
-      <div class="nav-item"><div class="nav-dot"></div>Livo</div>
-      <div class="nav-item"><div class="nav-dot"></div>Vorx</div>
-      <div class="nav-item"><div class="nav-dot"></div>Ascentra</div>
-      <div class="nav-item"><div class="nav-dot"></div>LandEx Demolition</div>
-      <div class="nav-item"><div class="nav-dot"></div>STR Co.</div>
+    <div class="nav-group">
+      <div class="nav-group-label">Live Now</div>
+      <a href="https://livoland.com" target="_blank" class="nav-link">↗ livoland.com</a>
     </div>
-    <div class="nav-section">
-      <div class="nav-label">Dev</div>
-      <div class="nav-item"><div class="nav-dot"></div>Repos</div>
-      <div class="nav-item"><div class="nav-dot"></div>Deployments</div>
+    <div class="nav-group">
+      <div class="nav-group-label">Repos</div>
+      <a href="https://github.com/alimacavid/livo" target="_blank" class="nav-link">↗ livo</a>
+      <a href="https://github.com/alimacavid/cortex" target="_blank" class="nav-link">↗ cortex</a>
+      <a href="https://github.com/alimacavid/ascentra" target="_blank" class="nav-link">↗ ascentra</a>
+      <a href="https://github.com/alimacavid/vorx-trust-workforce" target="_blank" class="nav-link">↗ vorx</a>
+      <a href="https://github.com/alimacavid/landexdemolition" target="_blank" class="nav-link">↗ landexdemolition</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Tools</div>
+      <a href="https://app.netlify.com" target="_blank" class="nav-link">↗ Netlify</a>
+      <a href="https://supabase.com/dashboard" target="_blank" class="nav-link">↗ Supabase</a>
+      <a href="https://github.com/alimacavid" target="_blank" class="nav-link">↗ GitHub</a>
     </div>
   </nav>
-  <main class="main">
+  <main class="main" id="dashboard">
     <div class="page-header">
-      <div class="page-title">LandEx Group — Command</div>
-      <div class="page-sub">Master overview · Phase 1 portal</div>
+      <div class="page-title">LandEx Group — Command Centre</div>
+      <div class="page-sub">Phase 1 portal · every button opens the exact tool directly</div>
     </div>
-    <div class="grid-5" style="margin-bottom:2.5rem">
-      <div class="stat"><div class="stat-label">Companies</div><div class="stat-value">7</div><div class="stat-sub">Under holding</div></div>
-      <div class="stat"><div class="stat-label">Live Sites</div><div class="stat-value stat-accent">2</div><div class="stat-sub">livoland.com +1</div></div>
-      <div class="stat"><div class="stat-label">In Dev</div><div class="stat-value">3</div><div class="stat-sub">Active builds</div></div>
-      <div class="stat"><div class="stat-label">Repos</div><div class="stat-value">5</div><div class="stat-sub">GitHub</div></div>
-      <div class="stat"><div class="stat-label">Open Items</div><div class="stat-value" style="color:var(--warning)">6</div><div class="stat-sub">Needs action</div></div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-label">Companies</div><div class="stat-value">7</div><div class="stat-sub">Under holding</div></div>
+      <div class="stat-card"><div class="stat-label">Live Sites</div><div class="stat-value" style="color:var(--success)">2</div><div class="stat-sub">livoland.com +1</div></div>
+      <div class="stat-card"><div class="stat-label">In Dev</div><div class="stat-value" style="color:var(--warning)">3</div><div class="stat-sub">Active builds</div></div>
+      <div class="stat-card"><div class="stat-label">Repos</div><div class="stat-value">5</div><div class="stat-sub">GitHub</div></div>
+      <div class="stat-card"><div class="stat-label">Open Items</div><div class="stat-value" style="color:var(--danger)">6</div><div class="stat-sub">Need action</div></div>
     </div>
     <div class="section">
-      <div class="section-title">Companies</div>
-      <div class="grid-3">
-        <div class="company-card" style="--accent:#7C3AED"><div class="card-top"><div class="card-icon">LV</div><span class="badge badge-live">● Live</span></div><div class="card-name">Livo</div><div class="card-desc">Property maintenance &amp; turnover. Greater Vancouver.</div><div class="card-links"><a class="btn btn-primary" href="https://livoland.com" target="_blank">↗ livoland.com</a><a class="btn" href="https://github.com/alimacavid/livo" target="_blank">GitHub</a></div></div>
-        <div class="company-card" style="--accent:#06B6D4"><div class="card-top"><div class="card-icon" style="background:rgba(6,182,212,.15);color:#06B6D4">VX</div><span class="badge badge-dev">● Dev</span></div><div class="card-name">Vorx</div><div class="card-desc">Trust-based workforce supply platform.</div><div class="card-links"><a class="btn" href="https://github.com/alimacavid/vorx-trust-workforce" target="_blank">GitHub</a></div></div>
-        <div class="company-card" style="--accent:#F59E0B"><div class="card-top"><div class="card-icon" style="background:rgba(245,158,11,.15);color:#F59E0B">AS</div><span class="badge badge-dev">● Dev</span></div><div class="card-name">Ascentra</div><div class="card-desc">Operational pipeline for LandEx Construction.</div><div class="card-links"><a class="btn" href="https://github.com/alimacavid/ascentra" target="_blank">GitHub</a></div></div>
-        <div class="company-card" style="--accent:#EF4444"><div class="card-top"><div class="card-icon" style="background:rgba(239,68,68,.15);color:#EF4444">LD</div><span class="badge badge-live">● Live</span></div><div class="card-name">LandEx Demolition</div><div class="card-desc">Site prep, hazmat &amp; abatement services.</div><div class="card-links"><a class="btn" href="https://github.com/alimacavid/landexdemolition" target="_blank">GitHub</a></div></div>
-        <div class="company-card" style="--accent:#22C55E"><div class="card-top"><div class="card-icon" style="background:rgba(34,197,94,.15);color:#22C55E">LC</div><span class="badge badge-planned">○ Planned</span></div><div class="card-name">LandEx Construction</div><div class="card-desc">Renovation &amp; construction arm.</div><div class="card-links"><a class="btn" href="#">Create Repo</a></div></div>
-        <div class="company-card" style="--accent:#8B5CF6"><div class="card-top"><div class="card-icon" style="background:rgba(139,92,246,.15);color:#8B5CF6">ST</div><span class="badge badge-planned">○ Planned</span></div><div class="card-name">STR Co.</div><div class="card-desc">Short-term rental management (TBD).</div><div class="card-links"><a class="btn" href="#">Define</a></div></div>
+      <div class="section-header"><div class="section-title">Companies</div><div class="section-line"></div></div>
+      <div class="company-grid">
+        <div class="company-card"><div class="accent-bar" style="background:#6D28D9"></div><div class="card-head"><div class="card-icon" style="background:rgba(109,40,217,.1);color:#6D28D9">LV</div><span class="badge badge-live">● Live</span></div><div class="card-name">Livo</div><div class="card-desc">Property maintenance &amp; turnover. Greater Vancouver.</div><div class="card-actions"><a class="action-btn green" href="https://livoland.com" target="_blank"><span class="btn-label">🌐 Open live site</span><span class="btn-arrow">↗</span></a><a class="action-btn primary" href="https://github.com/alimacavid/livo" target="_blank"><span class="btn-label">📁 Edit files on GitHub</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://github.com/alimacavid/livo/tree/staging" target="_blank"><span class="btn-label">🔧 Staging branch</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://app.netlify.com" target="_blank"><span class="btn-label">🚀 Netlify deploys</span><span class="btn-arrow">↗</span></a></div></div>
+        <div class="company-card"><div class="accent-bar" style="background:#0891B2"></div><div class="card-head"><div class="card-icon" style="background:rgba(8,145,178,.1);color:#0891B2">VX</div><span class="badge badge-dev">● Dev</span></div><div class="card-name">Vorx</div><div class="card-desc">Trust-based workforce supply. Role-based contractor platform.</div><div class="card-actions"><a class="action-btn primary" href="https://github.com/alimacavid/vorx-trust-workforce" target="_blank"><span class="btn-label">📁 Edit files on GitHub</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://github.com/alimacavid/vorx-trust-workforce/tree/main/src" target="_blank"><span class="btn-label">💻 Source files (src/)</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://supabase.com/dashboard" target="_blank"><span class="btn-label">🗄 Supabase database</span><span class="btn-arrow">↗</span></a></div></div>
+        <div class="company-card"><div class="accent-bar" style="background:#D97706"></div><div class="card-head"><div class="card-icon" style="background:rgba(217,119,6,.1);color:#D97706">AS</div><span class="badge badge-dev">● Dev</span></div><div class="card-name">Ascentra</div><div class="card-desc">Operational pipeline for LandEx Construction. Enquiry to clearance.</div><div class="card-actions"><a class="action-btn primary" href="https://github.com/alimacavid/ascentra" target="_blank"><span class="btn-label">📁 Edit files on GitHub</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://supabase.com/dashboard" target="_blank"><span class="btn-label">🗄 Supabase database</span><span class="btn-arrow">↗</span></a></div></div>
+        <div class="company-card"><div class="accent-bar" style="background:#DC2626"></div><div class="card-head"><div class="card-icon" style="background:rgba(220,38,38,.1);color:#DC2626">LD</div><span class="badge badge-live">● Live</span></div><div class="card-name">LandEx Demolition</div><div class="card-desc">Site preparation, hazmat &amp; abatement services.</div><div class="card-actions"><a class="action-btn primary" href="https://github.com/alimacavid/landexdemolition" target="_blank"><span class="btn-label">📁 Edit files on GitHub</span><span class="btn-arrow">↗</span></a><a class="action-btn" href="https://github.com/alimacavid/landexdemolition/blob/main/index.html" target="_blank"><span class="btn-label">📄 Edit index.html directly</span><span class="btn-arrow">↗</span></a></div></div>
+        <div class="company-card"><div class="accent-bar" style="background:#16A34A"></div><div class="card-head"><div class="card-icon" style="background:rgba(22,163,74,.1);color:#16A34A">LC</div><span class="badge badge-planned">○ Planned</span></div><div class="card-name">LandEx Construction</div><div class="card-desc">Renovation &amp; construction arm. Full project management pipeline.</div><div class="card-actions"><a class="action-btn" href="https://github.com/new" target="_blank"><span class="btn-label">➕ Create GitHub repo</span><span class="btn-arrow">↗</span></a></div></div>
+        <div class="company-card"><div class="accent-bar" style="background:#7C3AED"></div><div class="card-head"><div class="card-icon" style="background:rgba(124,58,237,.1);color:#7C3AED">ST</div><span class="badge badge-planned">○ Planned</span></div><div class="card-name">STR Co.</div><div class="card-desc">Short-term rental management. Structure TBD.</div><div class="card-actions"><a class="action-btn" href="https://github.com/new" target="_blank"><span class="btn-label">➕ Create GitHub repo</span><span class="btn-arrow">↗</span></a></div></div>
       </div>
     </div>
-    <div class="section">
-      <div class="section-title">Open Items</div>
+    <div class="company-grid" style="margin-bottom:2rem">
+      <div class="company-card"><div class="accent-bar" style="background:#DB2777"></div><div class="card-head"><div class="card-icon" style="background:rgba(219,39,119,.1);color:#DB2777">JP</div><span class="badge badge-planned">○ Planned</span></div><div class="card-name">Javids Pictures</div><div class="card-desc">Marketing &amp; media for all LandEx Group companies.</div><div class="card-actions"><a class="action-btn" href="https://github.com/new" target="_blank"><span class="btn-label">➕ Create GitHub repo</span><span class="btn-arrow">↗</span></a></div></div>
+    </div>
+    <div class="section" id="open-items">
+      <div class="section-header"><div class="section-title">Open Items</div><div class="section-line"></div></div>
       <div class="items-list">
-        <div class="item"><div class="item-priority p-high"></div><div class="item-text">Verify Netlify deploy after repo rename</div><span class="item-tag tag-livo">Livo</span></div>
-        <div class="item"><div class="item-priority p-high"></div><div class="item-text">Delete extra Netlify sites (staging + broken)</div><span class="item-tag tag-livo">Livo</span></div>
-        <div class="item"><div class="item-priority p-med"></div><div class="item-text">Verify GitHub email to complete cortex → private</div><span class="item-tag tag-cortex">Cortex</span></div>
-        <div class="item"><div class="item-priority p-med"></div><div class="item-text">Define STR company structure</div><span class="item-tag">STR</span></div>
-        <div class="item"><div class="item-priority p-low"></div><div class="item-text">Enable Netlify branch deploys for staging</div><span class="item-tag tag-livo">Livo</span></div>
-        <div class="item"><div class="item-priority p-low"></div><div class="item-text">Create LandEx Construction GitHub repo</div><span class="item-tag">LandEx</span></div>
+        <div class="item-row"><div class="priority-bar ph"></div><div class="item-text">Verify Netlify still deploys after livo-website → livo rename</div><a href="https://app.netlify.com" target="_blank" class="item-co livo" style="text-decoration:none">Check Netlify ↗</a></div>
+        <div class="item-row"><div class="priority-bar ph"></div><div class="item-text">Delete livo-website-staging &amp; celadon-marzipan Netlify sites</div><a href="https://app.netlify.com" target="_blank" class="item-co livo" style="text-decoration:none">Netlify ↗</a></div>
+        <div class="item-row"><div class="priority-bar pm"></div><div class="item-text">Verify GitHub email to complete cortex → private</div><a href="https://github.com/settings/emails" target="_blank" class="item-co cortex" style="text-decoration:none">GitHub Settings ↗</a></div>
+        <div class="item-row"><div class="priority-bar pm"></div><div class="item-text">Define STR company structure — standalone or real estate holding?</div><span class="item-co">STR Co.</span></div>
+        <div class="item-row"><div class="priority-bar pl"></div><div class="item-text">Enable Netlify branch deploys for staging on livoland.com</div><a href="https://app.netlify.com" target="_blank" class="item-co livo" style="text-decoration:none">Netlify ↗</a></div>
+        <div class="item-row"><div class="priority-bar pl"></div><div class="item-text">Create LandEx Construction GitHub repo</div><a href="https://github.com/new" target="_blank" class="item-co" style="text-decoration:none">Create ↗</a></div>
+      </div>
+    </div>
+    <div class="section" id="quick-access">
+      <div class="section-header"><div class="section-title">Quick Access</div><div class="section-line"></div></div>
+      <div class="quick-grid">
+        <div class="quick-card"><div class="quick-title">GitHub Repos</div><div class="quick-links">
+          <a class="quick-link" href="https://github.com/alimacavid" target="_blank"><span>All repositories</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/livo" target="_blank"><span>alimacavid/livo</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/cortex" target="_blank"><span>alimacavid/cortex</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/ascentra" target="_blank"><span>alimacavid/ascentra</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/vorx-trust-workforce" target="_blank"><span>alimacavid/vorx</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/landexdemolition" target="_blank"><span>alimacavid/landexdemolition</span><span>↗</span></a>
+        </div></div>
+        <div class="quick-card"><div class="quick-title">Live &amp; Deploy</div><div class="quick-links">
+          <a class="quick-link" href="https://livoland.com" target="_blank"><span>livoland.com</span><span>↗</span></a>
+          <a class="quick-link" href="https://app.netlify.com" target="_blank"><span>Netlify dashboard</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/livo/tree/staging" target="_blank"><span>Livo staging branch</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/alimacavid/livo/deployments" target="_blank"><span>Livo deployments log</span><span>↗</span></a>
+        </div></div>
+        <div class="quick-card"><div class="quick-title">Tools &amp; Services</div><div class="quick-links">
+          <a class="quick-link" href="https://supabase.com/dashboard" target="_blank"><span>Supabase</span><span>↗</span></a>
+          <a class="quick-link" href="https://claude.ai" target="_blank"><span>Claude AI</span><span>↗</span></a>
+          <a class="quick-link" href="https://github.com/settings" target="_blank"><span>GitHub Settings</span><span>↗</span></a>
+          <a class="quick-link" href="https://alimacavid.github.io/cortex/CORTEX.html" target="_blank"><span>This portal URL</span><span>↗</span></a>
+        </div></div>
       </div>
     </div>
   </main>
 </div>
 <footer>
-  <div class="footer-text">CORTEX v1.0 — Phase 1 Static · LandEx Group</div>
+  <div class="footer-text">CORTEX v1.1 — Phase 1 · LandEx Group</div>
   <div class="footer-text" id="date"></div>
 </footer>
 <script>
