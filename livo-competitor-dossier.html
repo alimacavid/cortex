@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LIVO — Competitor Dossier by Service &amp; Subservice · July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#6B3FA0; --purple-dk:#4E2C78; --lime:#C4D600; --gray:#C8C9C7;
+  --ink:#2C2C2C; --white:#fff; --bg:#F6F5F8; --line:#E4E2E9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Montserrat,sans-serif;font-weight:800;margin:0;letter-spacing:-.01em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 18px}
+
+header{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dk) 100%);color:#fff;padding:44px 0 38px}
+header h1{font-size:clamp(26px,4.4vw,40px);line-height:1.1}
+header .kick{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
+header .back{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#EDE7F4;text-decoration:none;border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:5px 13px;margin-bottom:16px}
+header .back:hover{background:rgba(255,255,255,.14)}
+header p{max-width:700px;margin:14px 0 0;color:#EDE7F4}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;min-width:148px}
+.stat b{display:block;font-family:Montserrat;font-size:22px;color:var(--lime);line-height:1.1}
+.stat span{font-size:11.5px;color:#EDE7F4}
+
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 18px;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;padding:8px 15px;border-radius:100px;border:1px solid var(--line);white-space:nowrap}
+nav a:hover{background:var(--lime);border-color:var(--lime)}
+
+section{padding:44px 0 8px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);margin-bottom:8px}
+h2{font-size:clamp(21px,3vw,29px);margin-bottom:6px}
+.lede{color:#5C5866;max-width:820px;margin:8px 0 24px}
+h3{font-size:16px;margin:32px 0 12px;display:flex;align-items:center;gap:9px}
+h3::before{content:"";width:5px;height:17px;background:var(--lime);border-radius:3px;flex:0 0 auto}
+
+.tbl{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:820px}
+th{background:#FAF9FB;text-align:left;font-weight:700;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:#6E6879;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:bottom}
+td{padding:11px 13px;border-bottom:1px solid #F0EEF3;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+td b{font-weight:700}
+.sub{display:block;font-size:11.5px;color:#8C8797;margin-top:2px}
+
+.threat{display:inline-flex;align-items:center;justify-content:center;min-width:34px;font-family:Montserrat;font-weight:800;font-size:12.5px;padding:3px 8px;border-radius:100px;color:#fff}
+.t9{background:#8E2A2A}.t8{background:#B4562A}.t7{background:#B98B1E}.t6{background:#7E8A2C}.t5{background:#5E7A4E}.t4{background:#5B7080}
+
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
+.g-open{background:#EEF3C6;color:#4E5A00}
+.g-cont{background:#FBE6E6;color:#8E2A2A}
+.g-part{background:#F3ECDA;color:#8A6A17}
+.g-new{background:#EDE4F7;color:var(--purple-dk)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px;margin-top:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 17px}
+.card h4{font-size:14.5px;line-height:1.3;margin-bottom:6px}
+.card p{margin:0;font-size:12.8px;color:#5C5866;line-height:1.5}
+.card.win{border-color:var(--purple);box-shadow:0 2px 0 var(--lime)}
+.card .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:6px}
+
+.callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--lime);border-radius:12px;padding:16px 18px;margin:20px 0}
+.callout h4{font-size:14px;margin-bottom:6px}
+.callout p{margin:0;font-size:13.5px;color:#5C5866}
+.callout.warn{border-left-color:#8E2A2A}
+
+footer{background:var(--ink);color:#B9B5C2;padding:26px 0;margin-top:48px;font-size:12.5px}
+footer b{color:#fff}
+@media print{nav{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="back" href="CORTEX.html">&larr; Cortex</a>
+  <div class="kick">Internal — not for the website</div>
+  <h1>Competitor Dossier<br>by Service &amp; Subservice</h1>
+  <p>Greater Vancouver and Tri-Cities, July 2026. Every named operator competing with LIVO in Coquitlam, Port Coquitlam and Port Moody, mapped to the exact subservice they contest, with published pricing where it exists.</p>
+  <div class="stats">
+    <div class="stat"><b>41</b><span>Named competitors</span></div>
+    <div class="stat"><b>4</b><span>Divisions mapped</span></div>
+    <div class="stat"><b>11</b><span>Subservices uncontested</span></div>
+    <div class="stat"><b>6</b><span>Publish real prices</span></div>
+  </div>
+</div></header>
+
+<nav><div class="wrap">
+  <a href="#board">Threat board</a>
+  <a href="#power">Power Washing &amp; Windows</a>
+  <a href="#junk">Junk Removal</a>
+  <a href="#interior">Interior Cleaning</a>
+  <a href="#airbnb">Airbnb Turnover</a>
+  <a href="#white">White space</a>
+  <a href="#guarantees">Guarantee gap</a>
+</div></nav>
+
+<!-- ================= BOARD ================= -->
+<section id="board"><div class="wrap">
+  <div class="eyebrow">The board</div>
+  <h2>Who actually threatens LIVO</h2>
+  <p class="lede">Ranked by territory overlap × subservice overlap × marketing strength. Only six competitors in the entire region publish real prices — that is both the biggest threat and the biggest opening.</p>
+
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Competitor</th><th>Division hit</th><th>Type</th><th>Territory</th><th>Publishes price?</th><th>Threat</th></tr></thead>
+    <tbody>
+      <tr><td><b>Hellamaid</b><span class="sub">hellamaid.ca</span></td><td>Interior + Airbnb</td><td>Regional, tech-first</td><td>PoCo, Coquitlam, Port Moody</td><td>Yes — full</td><td><span class="threat t9">9</span></td></tr>
+      <tr><td><b>P&amp;J Cleaners</b><span class="sub">778-720-2224</span></td><td>Interior + Airbnb</td><td>Regional, SEO-heavy</td><td>All Tri-Cities, no travel fee</td><td>Yes — ranges</td><td><span class="threat t9">9</span></td></tr>
+      <tr><td><b>505-Junk</b><span class="sub">604-505-5865</span></td><td>Junk Removal</td><td>Regional, 10 trucks</td><td>Coquitlam page live</td><td>Yes — by weight</td><td><span class="threat t9">9</span></td></tr>
+      <tr><td><b>Capstone Gutter Cleaning</b><span class="sub">Since 2013</span></td><td>Power Washing &amp; Windows</td><td>Tri-Cities specialist</td><td>Coquitlam, PoCo, Port Moody</td><td>Yes — window</td><td><span class="threat t9">9</span></td></tr>
+      <tr><td><b>Shine City Pressure Washing</b><span class="sub">604-229-5354</span></td><td>Power Washing &amp; Windows</td><td>Regional, review moat</td><td>Tri-Cities + Metro Van</td><td>Yes — full</td><td><span class="threat t9">9</span></td></tr>
+      <tr><td><b>Maidless</b><span class="sub">maidless.ca</span></td><td>Interior + Airbnb</td><td>Instant-booking platform</td><td>Coquitlam covered</td><td>Yes — full, GST incl</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>Shack Shine Tri-Cities</b><span class="sub">O2E Brands franchise</span></td><td>Power Washing &amp; Windows</td><td>Franchise</td><td>Dedicated Tri-Cities unit</td><td>No — estimate only</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>AdelCo Home Services</b><span class="sub">1-888-789-6222</span></td><td>Power Washing &amp; Windows</td><td>Regional, full exterior</td><td>Tri-Cities pages for all 3</td><td>No — 20% off hook</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>1-800-GOT-JUNK?</b></td><td>Junk Removal</td><td>National franchise</td><td>Everywhere</td><td>Yes — truck fractions</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>Pixel Cleaners</b><span class="sub">pixelcleaners.com</span></td><td>Airbnb Turnover</td><td>Regional, calendar sync</td><td>Coquitlam covered</td><td>Yes — from $120</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>Turno marketplace</b></td><td>Airbnb Turnover</td><td>Platform / disintermediation</td><td>Vancouver &amp; region</td><td>Bid-based</td><td><span class="threat t8">8</span></td></tr>
+      <tr><td><b>Molly Maid</b><span class="sub">Deanna Edmonds, franchisee</span></td><td>Interior Cleaning</td><td>Franchise</td><td>Coquitlam / PoCo / Port Moody unit</td><td>No</td><td><span class="threat t7">7</span></td></tr>
+      <tr><td><b>ClearView Home Services</b><span class="sub">604-944-9972</span></td><td>Power Washing &amp; Windows</td><td>Local, 30+ years</td><td>Tri-Cities only</td><td>Partial — roof</td><td><span class="threat t7">7</span></td></tr>
+      <tr><td><b>Go Junk Go</b><span class="sub">604-358-2328</span></td><td>Junk Removal</td><td>Local, since 2020</td><td>Coquitlam-focused</td><td>No — volume quote</td><td><span class="threat t7">7</span></td></tr>
+      <tr><td><b>JUSTJUNK Port Coquitlam</b><span class="sub">604-678-5766</span></td><td>Junk Removal</td><td>Franchise</td><td>Tri-Cities</td><td>No — on-site quote</td><td><span class="threat t7">7</span></td></tr>
+      <tr><td><b>JunkToday</b><span class="sub">junktoday.ca</span></td><td>Junk Removal</td><td>Local, online booking</td><td>Port Coquitlam</td><td>Yes — from $99/item</td><td><span class="threat t7">7</span></td></tr>
+      <tr><td><b>The Maids Port Moody</b><span class="sub">604-987-8181</span></td><td>Interior Cleaning</td><td>Franchise, team model</td><td>Tri-Cities to Maple Ridge</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>AspenClean</b></td><td>Interior Cleaning</td><td>Regional, eco niche</td><td>PoCo, Port Moody</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Mesh Maids</b><span class="sub">meshmaids.ca</span></td><td>Interior Cleaning</td><td>Local</td><td>All Tri-Cities</td><td>Yes — move-out</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>BIN86JUNK</b><span class="sub">Since 2017</span></td><td>Junk Removal</td><td>Local</td><td>Port Coquitlam, Tri-Cities</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Crown Property Services</b></td><td>Power Washing &amp; Windows</td><td>Local, closest to LIVO model</td><td>Coquitlam, PoCo, Port Moody</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Willy's Window Washing</b></td><td>Power Washing &amp; Windows</td><td>Owner-operator</td><td>Port Coquitlam</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Henry's Home Services</b></td><td>Power Washing &amp; Windows</td><td>Owner-operator, multi-trade</td><td>Tri-Cities</td><td>No</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Kiwi Cleaners</b></td><td>Airbnb Turnover</td><td>Regional</td><td>Coquitlam, PoCo, Port Moody, Burke Mtn</td><td>60-sec quote</td><td><span class="threat t6">6</span></td></tr>
+      <tr><td><b>Quality One Home Services</b></td><td>Power Washing &amp; Windows</td><td>Local</td><td>Tri-Cities</td><td>No</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>Raincity Property Maintenance</b></td><td>Power Washing &amp; Windows</td><td>Local, roof-to-lawn</td><td>Tri-Cities</td><td>No</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>Two Small Men With Big Hearts</b></td><td>Junk Removal</td><td>National mover, 40+ yrs</td><td>Tri-Cities</td><td>No</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>Angel Pro-Clean</b></td><td>Airbnb Turnover</td><td>Regional</td><td>Coquitlam, PoCo</td><td>No</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>Vancity Cleaning</b></td><td>Airbnb Turnover</td><td>Budget hourly</td><td>Vancouver / Surrey</td><td>Yes — $30/hr/person</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>Maid in a Minute</b></td><td>Interior Cleaning</td><td>Family-operated</td><td>Tri-Cities + New West</td><td>No</td><td><span class="threat t5">5</span></td></tr>
+      <tr><td><b>BlueCoast Gutter Services</b><span class="sub">Jack Lu</span></td><td>Power Washing &amp; Windows</td><td>Gutter specialist</td><td>Coquitlam</td><td>No</td><td><span class="threat t4">4</span></td></tr>
+      <tr><td><b>Coastal Roof Cleaning Experts</b></td><td>Power Washing &amp; Windows</td><td>Roof specialist</td><td>Tri-Cities, Anmore, Belcarra</td><td>No</td><td><span class="threat t4">4</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="lede" style="margin-top:14px;font-size:13.5px">Also present, lower priority: Perma Solve, Revive Services, Spartan Power Washing, Koala House Detailing, Blue World Painting, Up &amp; Up Roofing, Precision, Frank's Home Detailing, Maids 4U, Samantha's Cleaning, Delta Home Cleaning, Speedy Sparkle, Clean Pilot, Yara Cleaning, Framework Property Care, Trash Bandits, Local Group.</p>
+</div></section>
+
+<!-- ================= POWER ================= -->
+<section id="power"><div class="wrap">
+  <div class="eyebrow">Division 01</div>
+  <h2>Power Washing &amp; Windows</h2>
+  <p class="lede">The most crowded division in Tri-Cities and the only one where a dedicated local specialist has been operating since 2013 with a published price list. Two of LIVO's competitors here are pure exterior specialists with a decade of local reputation, and one is a national franchise with a Tri-Cities-specific unit.</p>
+
+  <h3>Competitor profiles</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Who</th><th>What they sell</th><th>Published pricing</th><th>Their edge</th><th>Their weakness</th><th>Threat</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Capstone Gutter Cleaning</b><span class="sub">Coquitlam · since 2013</span></td>
+        <td>Gutter, window (int + ext), roof cleaning, pressure washing, skylight, strata window, downspout upgrades</td>
+        <td class="num">Windows $180–320 for a 2,000 sq ft home (15–25 windows) · $8–15/window · screens +$50–150 · larger homes $200–450</td>
+        <td>Neighbourhood-level content — Westwood Plateau, Burke Mountain, Maillardville, Como Lake, River Springs. Insured, WorkSafeBC, background-checked, satisfaction guarantee.</td>
+        <td>No interior cleaning, no junk, no Airbnb. Single-visit relationship. Brand reads as gutters, not full property care.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>Shine City Pressure Washing</b><span class="sub">604-229-5354 · since 2018</span></td>
+        <td>Pressure + soft wash, house wash, driveway, deck, roof, gutter, commercial</td>
+        <td class="num">House $250–600 · driveway $150–350 · deck/patio $150–400 · roof $300–800 (asphalt $400–1,500) · gutter $100–300, avg $150–225 for 2-storey · commercial $0.15–0.35/sq ft</td>
+        <td>5.0-star rating on 291+ Google reviews. Hot water plus soft wash. Flat-rate quoting, no hourly surprises. Bundle discounts. Ranks for almost every exterior search in PoCo.</td>
+        <td>Exterior only. No recurring contract product. Volume discount already trains customers to expect bundling.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>Shack Shine Tri-Cities</b><span class="sub">O2E Brands franchise</span></td>
+        <td>Window (int + ext), gutter/eavestrough, power wash, house wash, roof wash, Christmas lights, commercial &amp; strata</td>
+        <td class="num">None published — online estimate, pay only after the job is complete</td>
+        <td>National brand recall, uniformed crews, "one detailed visit" promise, franchise ad budget. Christmas light install owns Q4.</td>
+        <td>Franchise pricing is not locally flexible. No interior, no junk. Estimate-first flow loses impatient buyers.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>AdelCo Home Services</b><span class="sub">1-888-789-6222</span></td>
+        <td>Window, gutter, gutter repair &amp; install, hidden gutter repair, fascia/soffit repair &amp; install, pressure washing, moss removal, roof cleaning, house washing</td>
+        <td class="num">None published · "Call now &amp; get 20% off" · free inspection · no call-out fee</td>
+        <td>Widest exterior menu in the region — they do repairs and installs LIVO cannot. TADA247 booking app. Dedicated pages for all three Tri-Cities.</td>
+        <td>Permanent-discount positioning erodes trust. Sprawling brand, thin local identity. Slower to respond than owner-operators.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>ClearView Home Services</b><span class="sub">604-944-9972 · 30+ years</span></td>
+        <td>Soft wash / house wash, pressure washing, roof moss removal, gutter, Christmas lights</td>
+        <td class="num">Roof moss removal in BC $500–$1,500 · package pricing when moss + gutter booked together</td>
+        <td>Three decades in Tri-Cities. Soft-wash expertise on vinyl and aluminium siding. Bundles moss with gutter explicitly.</td>
+        <td>Dated web presence. No online booking. Nothing indoors.</td>
+        <td><span class="threat t7">7</span></td>
+      </tr>
+      <tr>
+        <td><b>Crown Property Services</b></td>
+        <td>Pressure washing, interior <em>and</em> exterior window cleaning, commercial + residential</td>
+        <td class="num">None published — quote form</td>
+        <td>Closest structural match to LIVO's combined interior/exterior model in Tri-Cities.</td>
+        <td>Quote-form only, no instant price. Small footprint, low review volume.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Willy's Window Washing</b><span class="sub">Owner-operator</span></td>
+        <td>Window washing, pressure washing</td>
+        <td class="num">Verbal quotes — reviews describe them as reasonable</td>
+        <td>Top-ranked on Yelp for PoCo window washing. Reviews cite on-time arrival and personal follow-up. Word of mouth.</td>
+        <td>One person. Cannot scale, cannot cover strata, no insurance depth, no year-round availability.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Henry's Home Services</b></td>
+        <td>Pressure washing, window, gutter — multi-trade home services</td>
+        <td class="num">None published</td>
+        <td>Appears in the Yelp top 10 for all three exterior categories in PoCo simultaneously.</td>
+        <td>Generalist. No specialization signal, no published pricing, no booking flow.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Quality One Home Services</b></td>
+        <td>Gutter cleaning, roof de-mossing, windows</td>
+        <td class="num">None published</td>
+        <td>Repeat-customer reputation, easy email contact, strata work (reviewed on a 5-house strata job covering moss + gutter + window).</td>
+        <td>Small crew. No brand system. No digital funnel.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+      <tr>
+        <td><b>Raincity Property Maintenance</b></td>
+        <td>Roof &amp; gutter, pressure washing, rodent and bird control, lawn</td>
+        <td class="num">None published</td>
+        <td>"Rooftop to lawn" bundling — the same one-vendor pitch LIVO makes, from the outside in.</td>
+        <td>Pest control dilutes the cleaning brand. No interior cleaning, no junk.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+      <tr>
+        <td><b>BlueCoast Gutter Services</b><span class="sub">Jack Lu</span></td>
+        <td>Gutter cleaning, gutter diagnosis and repair</td>
+        <td class="num">None published</td>
+        <td>Reviewed for honest on-site assessment rather than upselling. Trusted for complicated gutter systems.</td>
+        <td>Single subservice, single operator.</td>
+        <td><span class="threat t4">4</span></td>
+      </tr>
+      <tr>
+        <td><b>Coastal Roof Cleaning Experts</b></td>
+        <td>Roof cleaning and moss removal, concrete tile specialist</td>
+        <td class="num">None published</td>
+        <td>Concrete tile expertise — the dominant roof type in Heritage Woods, Westwood Plateau and Burquitlam. Serves Anmore and Belcarra.</td>
+        <td>Roofs only. Seasonal. No cross-sell.</td>
+        <td><span class="threat t4">4</span></td>
+      </tr>
+      <tr>
+        <td><b>Independent Tri-Cities operator</b><span class="sub">Craigslist, 10+ yrs</span></td>
+        <td>Roof moss (hand-clean + zinc), gutter, leak sealing, siding soft wash, window (deionised water), pressure washing, Christmas lights</td>
+        <td class="num">Quote-based · $25 off promo code</td>
+        <td><b>The guarantees.</b> Two-year moss warranty with free re-clean, eight-month window guarantee, before/after photos on every gutter job, licensed / insured / bonded / WorkSafeBC.</td>
+        <td>Craigslist-only distribution. No brand, no website, no scale.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Subservice-level contest map</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Subservice</th><th>Who contests it in Tri-Cities</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Driveway / walkway wash</td><td>Shine City, Capstone, AdelCo, Shack Shine, Crown, Blue World, Spartan</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>House / siding soft wash</td><td>ClearView, Shine City, AdelCo, Shack Shine, Capstone</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Gutter cleaning</td><td>Capstone, BlueCoast, Shine City, Shack Shine, AdelCo, Quality One, Henry's, Raincity</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Exterior window cleaning</td><td>Capstone, Willy's, Shack Shine, AdelCo, Crown, Henry's, Revive</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Roof moss removal</td><td>ClearView, Coastal, Capstone, AdelCo, Quality One, Shine City</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Deck &amp; fence wash</td><td>Shine City, Capstone, AdelCo</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Skylight cleaning</td><td>Capstone only</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Strata / commercial exterior</td><td>Shack Shine, Shine City, Capstone, Quality One</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Christmas light install</td><td>Shack Shine, ClearView, independent operator</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Downspout flush &amp; flow test</td><td>Bundled by most, priced by none</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Gutter brightening (tiger stripes)</td><td>Nobody in Tri-Cities</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Hard water stain removal</td><td>Nobody in Tri-Cities</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Solar panel cleaning</td><td>Nobody in Tri-Cities</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Garage floor degrease</td><td>Nobody in Tri-Cities</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Patio furniture &amp; awning wash</td><td>Capstone touches awnings only</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Gutter / fascia repair &amp; install</td><td>AdelCo, BlueCoast, Up &amp; Up Roofing</td><td><span class="tag g-new">LIVO cannot serve — refer or partner</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout warn">
+    <h4>The specific thing to beat</h4>
+    <p>Capstone publishes $8–15 per window and $180–320 for a full home. Shine City publishes flat rates across every surface. If LIVO's booking page shows a number and theirs shows a number, the comparison is direct — which is exactly why the current under-pricing reads as a red flag rather than a bargain. Match the format, sit at the honest middle of the band, and win on the thing neither of them has: one vendor for the inside and the outside.</p>
+  </div>
+</div></section>
+
+<!-- ================= JUNK ================= -->
+<section id="junk"><div class="wrap">
+  <div class="eyebrow">Division 02</div>
+  <h2>Junk Removal</h2>
+  <p class="lede">Two national franchises, one regional operator with a genuinely differentiated pricing model, and four local players — one of which has built its entire Coquitlam pitch around driving Westwood Plateau and Burke Mountain grades. This is a crowded division where LIVO's only current differentiator is being cheapest, which is the weakest position available.</p>
+
+  <h3>Competitor profiles</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Who</th><th>Model</th><th>Published pricing</th><th>Their edge</th><th>Their weakness</th><th>Threat</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>505-Junk</b><span class="sub">604-505-5865 · Coquitlam page</span></td>
+        <td>Pay-by-weight, Measurement Canada certified onboard scales</td>
+        <td class="num">Pull-up $99 + $0.49/lb · Outside $99 + $0.59/lb · Inside $99 + $0.69/lb · 200 lb minimum</td>
+        <td>The only weight-based model in the market, and they've built the whole brand on attacking volume pricing as guesswork. Ten trucks, seven days a week, same-day. Five shoreline cleanups, 17,000 lbs recovered.</td>
+        <td>Weight pricing punishes customers with heavy loads (concrete, soil, plaster). Price is unknowable until the truck is weighed — anxiety for budget-conscious buyers.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>1-800-GOT-JUNK?</b></td>
+        <td>Volume, truck fractions (⅛, ¼, ½, ¾, full)</td>
+        <td class="num">Half $400–600 · full $700–1,000 · single large item $130–400 (mattress $70–100) · minimum $130–150</td>
+        <td>Highest brand recall in Canada. Same-day first-come service, bookable four months out. Price includes loading, cleanup, disposal and recycling fees.</td>
+        <td>The most expensive option by a wide margin. Franchise crews vary in quality. Customers actively search for cheaper local alternatives.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>Go Junk Go</b><span class="sub">604-358-2328 · since 2020</span></td>
+        <td>Volume</td>
+        <td class="num">None published — free quote</td>
+        <td><b>Sharpest local positioning in the division.</b> Explicitly markets Tri-Cities terrain expertise: Westwood Plateau's 15–20% grade driveways and Burke Mountain's narrow winding access. $5M liability. Same-day if you call before noon.</td>
+        <td>No published price. Five years old, thin review history versus the franchises.</td>
+        <td><span class="threat t7">7</span></td>
+      </tr>
+      <tr>
+        <td><b>JUSTJUNK Port Coquitlam</b><span class="sub">604-678-5766</span></td>
+        <td>Volume, free on-site quote</td>
+        <td class="num">None published</td>
+        <td>4am–6pm weekdays, book online 24/7, 30-minute arrival call. Up to 60% of a load donated or recycled. Licensed and insured.</td>
+        <td>On-site quote required before a number exists — high friction for small jobs.</td>
+        <td><span class="threat t7">7</span></td>
+      </tr>
+      <tr>
+        <td><b>JunkToday</b><span class="sub">junktoday.ca</span></td>
+        <td>Volume, online booking</td>
+        <td class="num">Single-item pickup from $99 in Port Coquitlam</td>
+        <td>Directly positions against 1-800-GOT-JUNK on price. All-inclusive upfront pricing, no hidden disposal fees. Same-day and next-day. Charity and recycler partnerships.</td>
+        <td>Competing purely on being cheaper than the franchise — the same trap LIVO is currently in.</td>
+        <td><span class="threat t7">7</span></td>
+      </tr>
+      <tr>
+        <td><b>BIN86JUNK</b><span class="sub">Locally owned since 2017</span></td>
+        <td>Volume</td>
+        <td class="num">None published — free estimate</td>
+        <td>Tri-Cities native, Burke Mountain to Douglas Island. Same-day and next-day. Handles green waste and construction debris. Eco-disposal messaging.</td>
+        <td>No published rates, no online booking flow, limited brand presence beyond location pages.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Two Small Men With Big Hearts</b></td>
+        <td>Mover offering junk removal</td>
+        <td class="num">None published</td>
+        <td>40+ years, BBB A+, provincially licensed, full cargo insurance. Sorts for recycling, donates usable goods, landfill last.</td>
+        <td>Junk is a sideline to moving. No dedicated junk crews or trucks.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Subservice-level contest map</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Subservice</th><th>Who contests it</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Load-based removal (¼ / ½ / full)</td><td>All seven</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Single-item pickup</td><td>1-800-GOT-JUNK ($130–400), JunkToday (from $99)</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Same-day service</td><td>505-Junk, Go Junk Go, JunkToday, BIN86JUNK, 1-800-GOT-JUNK</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Donation &amp; recycling sort</td><td>JUSTJUNK (60% diverted), 505-Junk, BIN86JUNK, Two Small Men</td><td><span class="tag g-cont">Saturated — and free everywhere</span></td></tr>
+      <tr><td>Construction debris</td><td>BIN86JUNK, JUSTJUNK, 505-Junk</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Green / yard waste</td><td>BIN86JUNK, Go Junk Go</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Curbside / pull-up discount tier</td><td>505-Junk only</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Mattress-specific disposal</td><td>Priced by 1-800-GOT-JUNK only ($70–100)</td><td><span class="tag g-open">Open locally</span></td></tr>
+      <tr><td>Appliance / freon handling</td><td>Nobody prices it separately</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>E-waste pickup</td><td>Nobody markets it in Tri-Cities</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Named cleanout packages (garage, locker, estate)</td><td>Nobody — all sell abstract truck fractions</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Hoarding cleanout + interior deep clean</td><td>Nobody can do both</td><td><span class="tag g-open">Open — LIVO only</span></td></tr>
+      <tr><td>Shed / deck teardown + haul</td><td>Nobody in the junk category</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Strata bulk pickup day</td><td>Nobody markets it</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Labour-only load assist</td><td>Nobody offers it</td><td><span class="tag g-open">Open</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout warn">
+    <h4>Go Junk Go is running the play LIVO should own</h4>
+    <p>They are winning Coquitlam with hyper-local operational credibility — naming the specific grades on Westwood Plateau and the access roads on Burke Mountain. LIVO is <em>headquartered</em> in Port Coquitlam and doesn't say so anywhere near loudly enough. That's a free advantage being left on the table.</p>
+  </div>
+</div></section>
+
+<!-- ================= INTERIOR ================= -->
+<section id="interior"><div class="wrap">
+  <div class="eyebrow">Division 03</div>
+  <h2>Interior Cleaning</h2>
+  <p class="lede">The most professionalised division. Three competitors publish full price lists, two are national franchises with local owner-operators, and one has built a booking flow that quotes in sixty seconds with tax included. LIVO's rates sit correctly against them — the gap is in proof, guarantees and add-on breadth, not price.</p>
+
+  <h3>Competitor profiles</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Who</th><th>What they sell</th><th>Published pricing</th><th>Their edge</th><th>Their weakness</th><th>Threat</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Hellamaid</b><span class="sub">Since 2017 · Tri-Cities pages live</span></td>
+        <td>Standard, deep, move-in/out, hourly, post-party, Airbnb</td>
+        <td class="num">PoCo: 1-bed $188 · 3-bed detached $258 · large family home $278 · hourly $59/cleaner, 3-hr min · Port Moody studio from $158 · before tax</td>
+        <td>2,000+ homes cleaned, 4.9★, 120+ verified reviews, $5M insured, background checked, 24-hour free cancellation, 100% Happiness Guarantee. BC Living Wage Employer certified. Canadian Cancer Society partner. Same cleaner assigned to the same home.</td>
+        <td>No exterior, no junk, no property services. Premium price with no bundling option. No storefront or local physical presence.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>P&amp;J Cleaners</b><span class="sub">778-720-2224</span></td>
+        <td>Standard, deep, move-out, Airbnb, post-construction, balcony cleaning, exterior house cleaning, office cleanouts</td>
+        <td class="num">$35–55/hr · 1,500 sq ft one-time deep $140–180 · bi-weekly maintenance $110–150 · 2,500+ sq ft $200–280 · post-construction $40–60/hr residential, $0.10–0.30/sq ft</td>
+        <td>810+ five-star reviews, 4.9★, $2M insured, bonded, background checked. Same rates in PoCo and Port Moody with no travel surcharge. Same-day if booked before noon. Publishes neighbourhood-specific content across all three cities.</td>
+        <td>Price range is wide enough to feel uncertain. Already stretched thin across interior, exterior, Airbnb and post-construction.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>Maidless</b><span class="sub">maidless.ca · Coquitlam covered</span></td>
+        <td>Standard, deep, move-out, post-construction, Airbnb</td>
+        <td class="num">Standard from $119 · deep from $199 · move-out from $249 · post-construction from $299 ($299–450 for 1,000–1,500 sq ft; $550–900 for 2,000–3,000) · <b>all prices GST included</b></td>
+        <td>Cheapest published prices in the market, quoted in 60 seconds online with no phone call, tax already included. HEPA equipment on post-construction.</td>
+        <td>Platform model with variable cleaner quality. No local Tri-Cities identity. Thin relationship with the customer.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>Molly Maid Coquitlam / PoCo / Port Moody</b><span class="sub">Franchisee Deanna Edmonds</span></td>
+        <td>Recurring housekeeping, one-time, move-in and move-out</td>
+        <td class="num">None published</td>
+        <td>National franchise trust with a named local owner. Professionally trained, bonded and insured teams. Customised plans. Strong reviews specifically for short-notice move-out work.</td>
+        <td>No published price, no instant booking. Franchise royalty structure limits price flexibility. Interior only.</td>
+        <td><span class="threat t7">7</span></td>
+      </tr>
+      <tr>
+        <td><b>The Maids — Port Moody</b><span class="sub">604-987-8181</span></td>
+        <td>Standard, move-in cleaning, same-day, Tri-Cities to Maple Ridge and Mission</td>
+        <td class="num">None published — quoted on square footage and condition</td>
+        <td>Team-based system cleaning roughly 1,000 sq ft per hour. Environmentally preferred products and EPA-approved disinfectants. Franchise process discipline.</td>
+        <td>Team model is expensive for small condos. No online pricing. No add-on depth.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>AspenClean</b><span class="sub">PoCo &amp; Port Moody · 10+ years</span></td>
+        <td>Recurring and one-time maid service, natural-product cleaning</td>
+        <td class="num">None published</td>
+        <td>Owns the eco niche outright — 100% natural products, their own product line. BBB A+, Top Choice Award winner. Bonded, insured, team-based.</td>
+        <td>Premium price with no bundling. Narrow appeal outside eco-motivated buyers. No exterior or junk.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Mesh Maids</b><span class="sub">meshmaids.ca</span></td>
+        <td>Standard, deep, move-in/move-out, add-ons</td>
+        <td class="num">Move-in/move-out $40–65/hr, or flat from $250 for smaller apartments</td>
+        <td>All three Tri-Cities covered with local neighbourhood copy — Moody townhouses, Coquitlam River condos, Mundy Park homes. Publishes its own pricing guides.</td>
+        <td>Smaller team, thinner review base than Hellamaid or P&amp;J. Limited service breadth.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Maid in a Minute</b><span class="sub">Family-operated</span></td>
+        <td>Residential cleaning, office cleaning, Tri-Cities + New Westminster + Pitt Meadows</td>
+        <td class="num">Free estimate, none published</td>
+        <td>Locally owned and family-operated. Bonded, insured, background-checked. 24-hour re-clean guarantee. Works solo or in pairs depending on home size.</td>
+        <td>Explicit no-refund policy. 48-hour cancellation window with a fee. Small capacity.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Subservice-level contest map</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Subservice</th><th>Who contests it</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Standard / recurring clean</td><td>All eight</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Deep clean</td><td>All eight</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Move-in / move-out</td><td>Hellamaid, Maidless, Molly Maid, Mesh Maids, The Maids, P&amp;J</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Post-construction / after-reno</td><td>Maidless (from $299), P&amp;J ($0.10–0.30/sq ft), Maids 4U</td><td><span class="tag g-cont">Saturated — and priced</span></td></tr>
+      <tr><td>Inside fridge &amp; oven</td><td>Most, as an add-on</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Interior windows</td><td>Capstone, Crown, most maid services</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Balcony / patio reset</td><td>P&amp;J explicitly offers balcony cleaning in Coquitlam</td><td><span class="tag g-part">Contested — move fast</span></td></tr>
+      <tr><td>Post-party / event clean</td><td>Hellamaid lists it under à-la-carte</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Eco / natural product option</td><td>AspenClean owns it, Mesh Maids partial</td><td><span class="tag g-part">Contested</span></td></tr>
+      <tr><td>Laundry &amp; fold</td><td>Listed as a task by some, priced by none</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Wall &amp; baseboard spot wash</td><td>Bundled into deep cleans, never sold separately</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Blind &amp; shutter detail</td><td>Nobody prices per unit</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Pet hair deep treatment</td><td>Nobody charges for it — everyone absorbs the extra time</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Garage sweep &amp; tidy</td><td>Nobody</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Organising / decluttering</td><td>Nobody in Tri-Cities cleaning</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Landlord tenant-turnover package with photo report</td><td>Nobody packages it</td><td><span class="tag g-open">Open</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <h4>Post-construction is contested, not open</h4>
+    <p>LIVO's After Construction Clean-Up currently sits as quote-only. Maidless quotes from $299 and publishes the bands; P&amp;J publishes $0.10–0.30 per square foot and $40–60 per hour. Quote-only loses to a published number every time on a search-driven decision. A starting price with a "final quote after photos" line beats an empty field.</p>
+  </div>
+</div></section>
+
+<!-- ================= AIRBNB ================= -->
+<section id="airbnb"><div class="wrap">
+  <div class="eyebrow">Division 04</div>
+  <h2>Airbnb Turnover</h2>
+  <p class="lede">The newest and least consolidated division — but three competitors already offer free photo reports on every clean, and one syncs directly to the host's booking calendar. The structural threat here isn't a company, it's Turno: a marketplace that lets hosts hire vetted individuals directly on competitive bids.</p>
+
+  <h3>Competitor profiles</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Who</th><th>What they sell</th><th>Published pricing</th><th>Their edge</th><th>Their weakness</th><th>Threat</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Maidless</b><span class="sub">Coquitlam covered</span></td>
+        <td>Turnovers, same-day, restocking, recurring pre-assigned cleaner</td>
+        <td class="num">Airbnb from $99, tax included</td>
+        <td><b>Before-and-after photos on every job at no extra charge</b>, explicitly positioned for AirCover damage claims. Restocks host-supplied toiletries, linens and kitchen supplies. Online booking in 60 seconds.</td>
+        <td>Doesn't own linen. No mid-stay product. Marketplace-style cleaner consistency risk.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>P&amp;J Cleaners — Coquitlam</b><span class="sub">Dedicated Coquitlam Airbnb page</span></td>
+        <td>Turnovers for Burke Mountain townhomes and Coquitlam Centre condos, restocking, same-day gap coverage</td>
+        <td class="num">Free quote, texted back within 15 minutes</td>
+        <td>810+ five-star reviews, 4.9★ from hosts specifically. $2M liability. Free re-clean if anything is missed. Turnovers in 1.5–3 hours. Restocks toiletries, coffee and custom welcome items.</td>
+        <td>No linen ownership, no calendar integration, no mid-stay service, no emergency SLA.</td>
+        <td><span class="threat t9">9</span></td>
+      </tr>
+      <tr>
+        <td><b>Pixel Cleaners</b><span class="sub">pixelcleaners.com · Coquitlam covered</span></td>
+        <td>Turnovers, linen changes, restocking, photo reports</td>
+        <td class="num">From $120, flat-rate</td>
+        <td><b>Calendar sync</b> — the host shares their Airbnb/VRBO calendar and turnovers schedule automatically. $5M insured, supplies included, photo report every clean, linen service available. Heavy-mess surcharge communicated before it's applied.</td>
+        <td>Higher entry price than Maidless. Vancouver-centric brand with no Tri-Cities identity.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>Turno marketplace</b><span class="sub">turno.com</span></td>
+        <td>Marketplace connecting hosts to vetted independent cleaners</td>
+        <td class="num">Competitive bids from individual cleaners</td>
+        <td>Automatic scheduling synced to the reservation calendar, in-app chat, checklists, photo updates, automatic payments. Hosts can book once or lock in a Primary Cleaner.</td>
+        <td>No accountability layer — the host manages quality themselves. No insurance guarantee. No linen, no restocking, no bundling.</td>
+        <td><span class="threat t8">8</span></td>
+      </tr>
+      <tr>
+        <td><b>Kiwi Cleaners</b></td>
+        <td>Turnovers, flat-rate, hotel-level standard</td>
+        <td class="num">60-second online quote</td>
+        <td>Covers Coquitlam, Port Coquitlam, Port Moody and Burke Mountain by name. Flat-rate pricing, detailed checklist, same-day turnovers.</td>
+        <td>Generic brand, no differentiating product, no linen or supply program.</td>
+        <td><span class="threat t6">6</span></td>
+      </tr>
+      <tr>
+        <td><b>Angel Pro-Clean</b></td>
+        <td>Turnovers with bed making, presentation checks, restocking placement, same/next-day prep</td>
+        <td class="num">None published</td>
+        <td>Covers Coquitlam and Port Coquitlam. In-house trained and screened staff. Positions on consistency and communication rather than price.</td>
+        <td>No published pricing, no booking flow, no photo report, low visibility.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+      <tr>
+        <td><b>Vancity Cleaning</b></td>
+        <td>Short-term rental cleaning by the hour, day or bi-weekly</td>
+        <td class="num">$30 per hour per person</td>
+        <td>Cheapest hourly rate in the market by a distance. Flexible payment terms.</td>
+        <td>Rate is below sustainable cost for an insured team. Surrey/Vancouver focus, weak Tri-Cities presence. No add-ons.</td>
+        <td><span class="threat t5">5</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Subservice-level contest map</h3>
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Subservice</th><th>Who contests it</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Standard turnover</td><td>All seven</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Same-day / back-to-back turnaround</td><td>Maidless, P&amp;J, Pixel, Kiwi, Angel Pro-Clean</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Photo report / damage documentation</td><td>Maidless (free), Pixel (free), Turno (in-app)</td><td><span class="tag g-cont">Saturated — and free elsewhere</span></td></tr>
+      <tr><td>Restocking host-supplied consumables</td><td>Maidless, P&amp;J, Pixel, Angel Pro-Clean</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Linen change (host's own linen)</td><td>Pixel, Maidless, Angel Pro-Clean</td><td><span class="tag g-cont">Saturated</span></td></tr>
+      <tr><td>Calendar sync to booking platform</td><td>Pixel, Turno</td><td><span class="tag g-part">Contested — LIVO has no answer</span></td></tr>
+      <tr><td>Quarterly / periodic deep reset</td><td>Nobody markets it as a scheduled product</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Linen rental — LIVO owns the stock</td><td>Nobody in the region</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Off-site laundry service</td><td>Nobody in the region</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Mid-stay refresh on 7+ night bookings</td><td>Nobody</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Consumables purchased and billed by LIVO</td><td>Nobody — everyone requires the host to supply</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Emergency call-out with a time guarantee</td><td>Nobody publishes an SLA</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Hot tub / BBQ amenity reset</td><td>Nobody</td><td><span class="tag g-open">Open</span></td></tr>
+      <tr><td>Multi-property manager plan</td><td>Turno's Primary Cleaner is the closest thing</td><td><span class="tag g-open">Open</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout warn">
+    <h4>Stop selling the photo report as an add-on</h4>
+    <p>Maidless and Pixel both include before-and-after photos free on every single turnover, and Turno bakes photo updates into the app. Charging for it will read as nickel-and-diming to any host who has shopped around. Include it, say loudly that it's included, and monetise the things nobody else has — linen stock, off-site laundry, mid-stay, and a guaranteed emergency response window.</p>
+  </div>
+</div></section>
+
+<!-- ================= WHITE SPACE ================= -->
+<section id="white"><div class="wrap">
+  <div class="eyebrow">Openings</div>
+  <h2>Uncontested subservices in Tri-Cities</h2>
+  <p class="lede">Nobody in Coquitlam, Port Coquitlam or Port Moody currently sells these. Each one is deliverable with LIVO's existing crews and equipment, or a small one-time capital purchase.</p>
+  <div class="grid">
+    <div class="card win"><div class="lbl">Airbnb · highest value</div><h4>Linen rental program</h4><p>LIVO owns hotel-grade linen stock and rotates it. Billed every turnover, forever. One-time inventory purchase, recurring margin, and the host is locked in. No competitor in the region does this.</p></div>
+    <div class="card win"><div class="lbl">Cross-division · unique</div><h4>Junk + deep clean in one booking</h4><p>Every junk company in Tri-Cities does junk only. Every maid service does cleaning only. Hoarding cleanouts, estate clearances and move-outs all need both, and LIVO is the only company in the market that can invoice one visit for both.</p></div>
+    <div class="card"><div class="lbl">Power washing</div><h4>Gutter brightening</h4><p>Removing black tiger-stripe oxidation from gutter faces. $200–500 elsewhere in Metro Vancouver, zero Tri-Cities supply, and the before/after photo sells itself.</p></div>
+    <div class="card"><div class="lbl">Power washing</div><h4>Hard water stain removal</h4><p>Sprinkler and irrigation mineral etching on glass. High-skill, high-margin, and no local operator advertises it at all.</p></div>
+    <div class="card"><div class="lbl">Power washing</div><h4>Solar panel cleaning</h4><p>Deionised water, no detergent, no warranty risk. Growing installed base across Burke Mountain new builds and effectively no local supply.</p></div>
+    <div class="card"><div class="lbl">Junk removal</div><h4>Named cleanout packages</h4><p>Garage, storage locker, estate, hoarding. Every competitor sells abstract truck fractions. Customers cannot picture half a truck but they can picture their garage.</p></div>
+    <div class="card"><div class="lbl">Junk removal</div><h4>Shed &amp; deck teardown</h4><p>Demolition plus haul in one visit. The highest-value job available without a permit, and no junk hauler in Tri-Cities offers it.</p></div>
+    <div class="card"><div class="lbl">Junk removal</div><h4>Strata bulk pickup day</h4><p>A truck stationed on site for a booked window. One sale, one mobilization, a full truck, and a standing quarterly contract.</p></div>
+    <div class="card"><div class="lbl">Interior</div><h4>Laundry &amp; fold, priced</h4><p>Everyone lists laundry as a possible task. Nobody prices it. It runs in the background while the crew cleans.</p></div>
+    <div class="card"><div class="lbl">Interior</div><h4>Landlord turnover package</h4><p>Deep clean, appliances, wall spot-wash and a dated photo report for the landlord's file. Landlords rebook and never haggle when a photo report is attached.</p></div>
+    <div class="card"><div class="lbl">Airbnb</div><h4>Emergency call-out SLA</h4><p>A published response window for a guest complaint mid-stay. Nobody in the region commits to one, and a host facing a bad review will pay without negotiating.</p></div>
+    <div class="card"><div class="lbl">Airbnb</div><h4>Mid-stay refresh</h4><p>Towel swap and bathroom reset on stays of 7+ nights. Billable revenue between turnovers that currently doesn't exist anywhere in the market.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= GUARANTEES ================= -->
+<section id="guarantees"><div class="wrap">
+  <div class="eyebrow">The gap that isn't price</div>
+  <h2>Every serious competitor publishes a guarantee. LIVO doesn't.</h2>
+  <p class="lede">This is the cheapest competitive move available — it costs nothing until someone claims it, and it directly answers the objection that a lower-priced newcomer is cutting corners.</p>
+
+  <div class="tbl tbl-scroll"><table>
+    <thead><tr><th>Competitor</th><th>What they promise</th></tr></thead>
+    <tbody>
+      <tr><td><b>Independent Tri-Cities operator</b></td><td>Two-year roof moss warranty with free re-clean if moss returns. Eight-month window guarantee. Before/after photos on every gutter job.</td></tr>
+      <tr><td><b>Hellamaid</b></td><td>100% Happiness Guarantee. Free cancellation up to 24 hours. Same cleaner assigned to the same home. Living Wage employer certification.</td></tr>
+      <tr><td><b>P&amp;J Cleaners</b></td><td>Free re-clean if anything is missed. $2M liability. Quote texted back within 15 minutes.</td></tr>
+      <tr><td><b>Shack Shine</b></td><td>No payment upfront — you're only charged after the job is complete.</td></tr>
+      <tr><td><b>Maidless</b></td><td>Before-and-after photos free on every Airbnb job. All prices quoted with GST already included.</td></tr>
+      <tr><td><b>Capstone</b></td><td>Satisfaction guarantee, full liability insurance, WorkSafeBC compliance, background-checked crews.</td></tr>
+      <tr><td><b>Capstone / Shine City</b></td><td>Free, no-obligation on-site estimate with transparent flat-rate pricing and no hidden costs.</td></tr>
+      <tr><td><b>Go Junk Go</b></td><td>$5M liability insurance, uniformed crews.</td></tr>
+      <tr><td><b>Pixel Cleaners</b></td><td>$5M insured, supplies included, photo report every clean, heavy-mess surcharge always communicated first.</td></tr>
+      <tr><td><b>Maid in a Minute</b></td><td>24-hour window to report an issue and they return free. (No refunds — corrections only.)</td></tr>
+      <tr><td><b>JUSTJUNK</b></td><td>Up to 60% of every load donated or recycled. 30-minute arrival call.</td></tr>
+      <tr><td><b>505-Junk</b></td><td>Measurement Canada certified scales — you only pay for what's actually weighed.</td></tr>
+      <tr><td style="background:#FAF7FF"><b>LIVO</b></td><td style="background:#FAF7FF">Nothing published.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <h4>What LIVO should publish</h4>
+    <p>A single guarantee that covers all four divisions and beats them individually: <b>re-do free within 48 hours, on any service, no questions.</b> Plus a two-year moss re-clean warranty to match the only operator offering one, before/after photos included on every job across all four divisions, and a 30-minute arrival call. None of it costs money until it's used, and all of it is currently unclaimed by anyone selling all four services at once.</p>
+  </div>
+
+  <div class="callout warn">
+    <h4>The one-sentence position nobody else can copy</h4>
+    <p>Capstone can't clean your kitchen. Hellamaid can't wash your driveway. 505-Junk can't turn over your Airbnb. Shack Shine can't haul your garage. LIVO is the only company in Port Coquitlam that does all four — and it's headquartered here. That is the whole pitch, and right now the website barely says it.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>LIVO Property Services</b> — competitor dossier, 29 July 2026. Pricing shown is what each competitor publishes on their own site or in market cost guides, current as of this date. Threat scores are LIVO-specific: territory overlap × subservice overlap × marketing strength.
+</div></footer>
+
+</body>
+</html>
