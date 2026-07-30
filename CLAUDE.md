@@ -153,3 +153,29 @@ livo/
 8. **Commit both the change AND the CLAUDE.md update together** — one commit, one message.
 9. **Git:** Always check `git status` before committing. Push to `origin/main` only after review.
 10. **Do not install packages** without confirmation from Ali.
+
+---
+
+## 8. Changelog
+
+### 2026-07-30 — Knowledge layer added to CORTEX portal
+- **What changed:** `CORTEX.html` gained a Knowledge section. It fetches the repo's own `.md` files over relative paths, renders them (headings, tables, lists, blockquotes, code, links), and provides full-text search across every registered file. Sidebar has a new **Knowledge** group filtering by Livo / LandEx / Vorx / Group. Each file shows its `Last-Modified` date and an "Edit on GitHub" link. Version bumped v1.1 → v1.2.
+- **Why:** The portal was a launchpad of links only. All the competitor, pricing, and equipment intelligence lived in `.md` files the portal never read, so Cortex could not be used to actually think or make decisions.
+- **File registry:** 23 files across Livo (12), LandEx (2), Vorx (2), Group (7). Registry lives in the `KB_FILES` array in `CORTEX.html`. **Adding a new `.md` requires adding it to `KB_FILES`** or it will not appear in the portal.
+- **Branch:** `staging` (not yet merged to main)
+- **Pending:** Awaiting Ali's approval to promote to main. Note PR #1 (competitor dossier) is still open from `staging` → `main`; merging it will now also bring this change.
+- **Known issues:**
+  - `notes/livo-competitor-dossier.md` resolves only after PR #1 merges. Until then the reader shows a "not on main yet" notice for it.
+  - Repo visibility: repo is **public**. Competitor intel and pricing rate cards are publicly readable. Ali to switch to private (requires GitHub Pro for Pages to keep serving).
+- **Notes:** Rule 4 above ("never modify CORTEX.html unless Ali explicitly says to") was satisfied — Ali explicitly authorised this build.
+
+### Content gaps identified 2026-07-30
+Files on `main` are thin stubs and do not reflect work done in chat sessions:
+| File | Size on main | Status |
+|---|---|---|
+| `notes/competitors.md` | 1.3 KB | Stub — ~12 rows, superseded by the dossier |
+| `docs/pricing.md` | 2.0 KB | Rate cards present, no margin floors, no dynamic-pricing rules |
+| `docs/equipment.md` | 1.6 KB | Partial — cumulative equipment log not merged in |
+| `cortex/references/03-livo-services.md` | 0.9 KB | Summary only |
+
+**Cortex update protocol:** every independent project session (Livo, Vorx, LandEx, Ascentra, STR) must end by emitting a `CORTEX UPDATE` block naming the target file and the exact content to append, dated. Without this, work stays trapped in chat and Cortex goes stale.
