@@ -250,7 +250,7 @@ footer{border-top:1px solid var(--border);padding:.85rem 2rem;display:flex;justi
   </main>
 </div>
 <footer>
-  <div class="footer-text">CORTEX v1.2 — Knowledge layer · LandEx Group</div>
+  <div class="footer-text">CORTEX v1.3 — Knowledge layer · LandEx Group</div>
   <div class="footer-text" id="date"></div>
 </footer>
 <script>
@@ -385,7 +385,7 @@ function kbOpen(path){
     var up = d.updated ? new Date(d.updated).toLocaleString('en-CA',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : 'unknown';
     r.innerHTML =
       '<div class="kb-meta"><span class="kb-path">'+esc(path)+'</span>' +
-      '<span class="kb-updated">Updated '+up+'</span>' +
+      '<span class="kb-updated" title="GitHub Pages build time, not this file\u2019s commit date">Site built '+up+'</span>' +
       '<a class="kb-edit" href="'+KB_REPO+path+'" target="_blank" rel="noopener">Edit on GitHub \u2197</a></div>' +
       '<div class="md">'+kbMarkdown(d.text)+'</div>';
   }).catch(function(){
