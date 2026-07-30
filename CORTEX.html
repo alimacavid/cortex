@@ -81,6 +81,54 @@ a{color:inherit;text-decoration:none}
 .quick-link:hover{border-color:var(--border2);color:var(--text);background:var(--surface)}
 footer{border-top:1px solid var(--border);padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--surface)}
 .footer-text{font-size:.68rem;color:var(--text3);font-family:'DM Mono',monospace}
+
+/* ---- Knowledge layer ---- */
+.kb-wrap{display:grid;grid-template-columns:250px 1fr;gap:1.25rem;align-items:start}
+.kb-index{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;position:sticky;top:70px;max-height:calc(100vh - 100px);overflow-y:auto}
+.kb-search{width:100%;padding:.55rem .7rem;border:1px solid var(--border2);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--text);background:var(--surface2);margin-bottom:.9rem}
+.kb-search:focus{outline:none;border-color:var(--purple);background:var(--surface)}
+.kb-group{margin-bottom:1rem}
+.kb-group-label{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:.35rem;padding-left:.15rem}
+.kb-file{display:flex;justify-content:space-between;align-items:center;gap:.4rem;width:100%;text-align:left;padding:.35rem .5rem;font-size:.8rem;color:var(--text2);border:none;background:none;border-radius:5px;cursor:pointer;font-family:'DM Sans',sans-serif;line-height:1.3}
+.kb-file:hover{background:var(--bg);color:var(--text)}
+.kb-file.active{background:rgba(109,40,217,.06);color:var(--purple);font-weight:500}
+.kb-file .kb-size{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--text3);flex-shrink:0}
+.kb-reader{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem;min-height:400px}
+.kb-meta{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:.75rem;margin-bottom:1.25rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.kb-path{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text3)}
+.kb-updated{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--text3)}
+.kb-edit{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--purple)}
+.kb-edit:hover{text-decoration:underline}
+.kb-empty{color:var(--text3);font-size:.85rem;padding:2rem 0;text-align:center}
+.kb-warn{background:var(--warning-bg);color:var(--warning);border-radius:7px;padding:.7rem .9rem;font-size:.8rem;margin-bottom:1rem}
+/* rendered markdown */
+.md h1{font-size:1.15rem;font-weight:600;margin:0 0 .8rem}
+.md h2{font-size:.95rem;font-weight:600;margin:1.6rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+.md h3{font-size:.85rem;font-weight:600;margin:1.1rem 0 .45rem;color:var(--text)}
+.md h4{font-size:.78rem;font-weight:600;margin:.9rem 0 .35rem;color:var(--text2);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
+.md p{font-size:.85rem;line-height:1.65;color:var(--text2);margin:.5rem 0}
+.md ul,.md ol{margin:.5rem 0 .5rem 1.15rem}
+.md li{font-size:.85rem;line-height:1.6;color:var(--text2);margin:.2rem 0}
+.md strong{color:var(--text);font-weight:600}
+.md code{font-family:'DM Mono',monospace;font-size:.78rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:.05rem .3rem}
+.md pre{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:.8rem;overflow-x:auto;margin:.7rem 0}
+.md pre code{border:none;background:none;padding:0}
+.md blockquote{border-left:2px solid var(--purple);background:var(--surface2);padding:.6rem .9rem;margin:.7rem 0;border-radius:0 6px 6px 0}
+.md blockquote p{margin:0}
+.md hr{border:none;border-top:1px solid var(--border);margin:1.4rem 0}
+.md a{color:var(--purple);text-decoration:underline;text-underline-offset:2px}
+.md table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.78rem}
+.md th{text-align:left;font-family:'DM Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);font-weight:500;padding:.45rem .6rem;border-bottom:1px solid var(--border2);white-space:nowrap}
+.md td{padding:.45rem .6rem;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.md tr:hover td{background:var(--surface2)}
+/* search results */
+.kb-hit{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;margin-bottom:.5rem;cursor:pointer;font-family:'DM Sans',sans-serif}
+.kb-hit:hover{border-color:var(--purple)}
+.kb-hit-file{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--purple);margin-bottom:.25rem}
+.kb-hit-line{font-size:.8rem;color:var(--text2);line-height:1.5}
+.kb-hit-line mark{background:var(--lime-bg);color:var(--lime);padding:0 .15rem;border-radius:2px}
+@media(max-width:900px){.kb-wrap{grid-template-columns:1fr}.kb-index{position:static;max-height:none}}
+
 </style>
 </head>
 <body>
@@ -98,6 +146,13 @@ footer{border-top:1px solid var(--border);padding:.85rem 2rem;display:flex;justi
       <a href="#dashboard" class="nav-link active">Dashboard</a>
       <a href="#open-items" class="nav-link">Open Items</a>
       <a href="#quick-access" class="nav-link">Quick Access</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Knowledge</div>
+      <a href="#knowledge" class="nav-link" data-kb-company="Livo">Livo</a>
+      <a href="#knowledge" class="nav-link" data-kb-company="LandEx">LandEx</a>
+      <a href="#knowledge" class="nav-link" data-kb-company="Vorx">Vorx</a>
+      <a href="#knowledge" class="nav-link" data-kb-company="Group">Group Strategy</a>
     </div>
     <div class="nav-group">
       <div class="nav-group-label">Live Now</div>
@@ -180,15 +235,206 @@ footer{border-top:1px solid var(--border);padding:.85rem 2rem;display:flex;justi
         </div></div>
       </div>
     </div>
+    <div class="section" id="knowledge">
+      <div class="section-header"><div class="section-title">Knowledge</div><div class="section-line"></div></div>
+      <div class="kb-wrap">
+        <div class="kb-index">
+          <input class="kb-search" id="kbSearch" type="search" placeholder="Search all files…" autocomplete="off">
+          <div id="kbIndex"></div>
+        </div>
+        <div class="kb-reader" id="kbReader">
+          <div class="kb-empty">Pick a file to read, or search across everything.</div>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 <footer>
-  <div class="footer-text">CORTEX v1.1 — Phase 1 · LandEx Group</div>
+  <div class="footer-text">CORTEX v1.2 — Knowledge layer · LandEx Group</div>
   <div class="footer-text" id="date"></div>
 </footer>
 <script>
 function tick(){var now=new Date();document.getElementById('clock').textContent=now.toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit'});document.getElementById('date').textContent=now.toLocaleDateString('en-CA',{weekday:'short',year:'numeric',month:'short',day:'numeric'});}
 tick();setInterval(tick,1000);
+
+/* ================= Knowledge layer ================= */
+var KB_REPO = 'https://github.com/alimacavid/cortex/edit/main/';
+var KB_FILES = [
+  {c:'Livo', t:'Competitor Dossier',    p:'notes/livo-competitor-dossier.md'},
+  {c:'Livo', t:'Competitor Log',        p:'notes/competitors.md'},
+  {c:'Livo', t:'Pricing Rate Cards',    p:'docs/pricing.md'},
+  {c:'Livo', t:'Equipment Master List', p:'docs/equipment.md'},
+  {c:'Livo', t:'SOPs',                  p:'docs/SOPs.md'},
+  {c:'Livo', t:'Division Reference',    p:'cortex/references/03-livo-services.md'},
+  {c:'Livo', t:'\u00b7 Power Washing',    p:'divisions/power-washing/CLAUDE.md'},
+  {c:'Livo', t:'\u00b7 Interior Cleaning',p:'divisions/interior-cleaning/CLAUDE.md'},
+  {c:'Livo', t:'\u00b7 Carpet & Upholstery',p:'divisions/carpet-upholstery/CLAUDE.md'},
+  {c:'Livo', t:'\u00b7 Junk Removal',     p:'divisions/junk-removal/CLAUDE.md'},
+  {c:'Livo', t:'\u00b7 Airbnb Turnover',  p:'divisions/airbnb-turnover/CLAUDE.md'},
+  {c:'Livo', t:'\u00b7 Commercial Cleanup',p:'divisions/commercial-cleanup/CLAUDE.md'},
+  {c:'LandEx', t:'Demolition',          p:'cortex/references/02-landex-demolition.md'},
+  {c:'LandEx', t:'Construction',        p:'cortex/references/06-landex-construction.md'},
+  {c:'Vorx',   t:'Vorx Reference',      p:'cortex/references/04-vorx.md'},
+  {c:'Vorx',   t:'Vorx Notes',          p:'notes/vorx.md'},
+  {c:'Group',  t:'Master Strategy',     p:'cortex/references/01-master-strategy.md'},
+  {c:'Group',  t:'Strategy Notes',      p:'notes/strategy.md'},
+  {c:'Group',  t:'STR Company',         p:'cortex/references/05-str-company.md'},
+  {c:'Group',  t:'Javids Pictures',     p:'cortex/references/07-javids-pictures.md'},
+  {c:'Group',  t:'Real Estate Holding', p:'cortex/references/08-real-estate-holding.md'},
+  {c:'Group',  t:'Portal Design System',p:'cortex/references/09-portal-design-system.md'},
+  {c:'Group',  t:'Open Items',          p:'cortex/references/10-open-items.md'}
+];
+var kbCache = {}, kbFilter = null, kbActive = null;
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function kbInline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<em>$2</em>');
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  s = s.replace(/(^|\s)(https?:\/\/[^\s<)]+)/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  return s;
+}
+
+function kbMarkdown(src){
+  var lines = src.replace(/\r\n/g,'\n').split('\n');
+  var out = [], i = 0;
+  function isTableSep(l){return /^\s*\|?[\s:-]*\|[\s|:-]*$/.test(l) && l.indexOf('-') > -1;}
+  while(i < lines.length){
+    var l = lines[i];
+    if(/^```/.test(l)){
+      var buf=[]; i++;
+      while(i<lines.length && !/^```/.test(lines[i])){buf.push(lines[i]);i++;}
+      i++; out.push('<pre><code>'+esc(buf.join('\n'))+'</code></pre>'); continue;
+    }
+    if(/^\s*$/.test(l)){i++;continue;}
+    if(/^(-{3,}|\*{3,}|_{3,})\s*$/.test(l)){out.push('<hr>');i++;continue;}
+    var h = l.match(/^(#{1,6})\s+(.*)$/);
+    if(h){var n=Math.min(h[1].length,4);out.push('<h'+n+'>'+kbInline(h[2])+'</h'+n+'>');i++;continue;}
+    if(l.indexOf('|') > -1 && i+1 < lines.length && isTableSep(lines[i+1])){
+      var cells = function(r){
+        r = r.trim().replace(/^\|/,'').replace(/\|$/,'');
+        return r.split('|').map(function(x){return kbInline(x.trim());});
+      };
+      var head = cells(l); i += 2;
+      var body = [];
+      while(i<lines.length && lines[i].indexOf('|')>-1 && !/^\s*$/.test(lines[i])){body.push(cells(lines[i]));i++;}
+      var t = '<table><thead><tr>'+head.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';
+      body.forEach(function(r){t += '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';});
+      out.push(t+'</tbody></table>'); continue;
+    }
+    if(/^\s*>\s?/.test(l)){
+      var q=[];
+      while(i<lines.length && /^\s*>\s?/.test(lines[i])){q.push(lines[i].replace(/^\s*>\s?/,''));i++;}
+      out.push('<blockquote><p>'+kbInline(q.join(' '))+'</p></blockquote>'); continue;
+    }
+    if(/^\s*[-*+]\s+/.test(l)){
+      var u=[];
+      while(i<lines.length && /^\s*[-*+]\s+/.test(lines[i])){u.push('<li>'+kbInline(lines[i].replace(/^\s*[-*+]\s+/,''))+'</li>');i++;}
+      out.push('<ul>'+u.join('')+'</ul>'); continue;
+    }
+    if(/^\s*\d+[.)]\s+/.test(l)){
+      var o=[];
+      while(i<lines.length && /^\s*\d+[.)]\s+/.test(lines[i])){o.push('<li>'+kbInline(lines[i].replace(/^\s*\d+[.)]\s+/,''))+'</li>');i++;}
+      out.push('<ol>'+o.join('')+'</ol>'); continue;
+    }
+    var para=[];
+    while(i<lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,6}\s|```|\s*[-*+]\s|\s*\d+[.)]\s|\s*>)/.test(lines[i])){para.push(lines[i]);i++;}
+    if(para.length) out.push('<p>'+kbInline(para.join(' '))+'</p>');
+  }
+  return out.join('\n');
+}
+
+function kbFetch(p){
+  if(kbCache[p]) return Promise.resolve(kbCache[p]);
+  return fetch(p, {cache:'no-cache'}).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    var lm = r.headers.get('Last-Modified');
+    return r.text().then(function(t){
+      kbCache[p] = {text:t, updated:lm};
+      return kbCache[p];
+    });
+  });
+}
+
+function kbRenderIndex(){
+  var el = document.getElementById('kbIndex');
+  var groups = {}, order = [];
+  KB_FILES.forEach(function(f){
+    if(kbFilter && f.c !== kbFilter) return;
+    if(!groups[f.c]){groups[f.c] = []; order.push(f.c);}
+    groups[f.c].push(f);
+  });
+  el.innerHTML = order.map(function(g){
+    return '<div class="kb-group"><div class="kb-group-label">'+g+'</div>' +
+      groups[g].map(function(f){
+        var on = (kbActive === f.p) ? ' active' : '';
+        return '<button class="kb-file'+on+'" data-path="'+f.p+'"><span>'+f.t+'</span></button>';
+      }).join('') + '</div>';
+  }).join('') || '<div class="kb-empty">No files.</div>';
+}
+
+function kbOpen(path){
+  kbActive = path; kbRenderIndex();
+  var meta = KB_FILES.filter(function(f){return f.p === path;})[0] || {t:path, p:path};
+  var r = document.getElementById('kbReader');
+  r.innerHTML = '<div class="kb-empty">Loading\u2026</div>';
+  kbFetch(path).then(function(d){
+    var up = d.updated ? new Date(d.updated).toLocaleString('en-CA',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : 'unknown';
+    r.innerHTML =
+      '<div class="kb-meta"><span class="kb-path">'+esc(path)+'</span>' +
+      '<span class="kb-updated">Updated '+up+'</span>' +
+      '<a class="kb-edit" href="'+KB_REPO+path+'" target="_blank" rel="noopener">Edit on GitHub \u2197</a></div>' +
+      '<div class="md">'+kbMarkdown(d.text)+'</div>';
+  }).catch(function(){
+    r.innerHTML =
+      '<div class="kb-meta"><span class="kb-path">'+esc(path)+'</span></div>' +
+      '<div class="kb-warn">This file is not on <strong>main</strong> yet. It may still be on the <strong>staging</strong> branch or not created.</div>' +
+      '<div class="kb-empty"><a class="kb-edit" href="'+KB_REPO+path+'" target="_blank" rel="noopener">Create or edit it on GitHub \u2197</a></div>';
+  });
+}
+
+function kbSearch(q){
+  var r = document.getElementById('kbReader');
+  q = q.trim();
+  if(q.length < 2){ kbActive = null; kbRenderIndex();
+    r.innerHTML = '<div class="kb-empty">Pick a file to read, or search across everything.</div>'; return; }
+  r.innerHTML = '<div class="kb-empty">Searching\u2026</div>';
+  var needle = q.toLowerCase();
+  Promise.all(KB_FILES.map(function(f){
+    return kbFetch(f.p).then(function(d){return {f:f, text:d.text};}).catch(function(){return null;});
+  })).then(function(res){
+    var hits = [];
+    res.forEach(function(x){
+      if(!x) return;
+      x.text.split('\n').forEach(function(line){
+        if(line.toLowerCase().indexOf(needle) > -1 && line.trim().length > 2 && hits.length < 80){
+          var clean = esc(line.trim()).slice(0,220);
+          var re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+          hits.push('<button class="kb-hit" data-path="'+x.f.p+'"><div class="kb-hit-file">'+x.f.c+' \u00b7 '+x.f.t+'</div><div class="kb-hit-line">'+clean.replace(re,'<mark>$1</mark>')+'</div></button>');
+        }
+      });
+    });
+    r.innerHTML = hits.length
+      ? '<div class="kb-meta"><span class="kb-path">'+hits.length+' match'+(hits.length===1?'':'es')+' for \u201c'+esc(q)+'\u201d</span></div>'+hits.join('')
+      : '<div class="kb-empty">Nothing found for \u201c'+esc(q)+'\u201d.</div>';
+  });
+}
+
+(function kbInit(){
+  kbRenderIndex();
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.kb-file,.kb-hit') : null;
+    if(b && b.dataset.path){ document.getElementById('kbSearch').value=''; kbOpen(b.dataset.path); return; }
+    var nav = e.target.closest ? e.target.closest('[data-kb-company]') : null;
+    if(nav){ kbFilter = nav.dataset.kbCompany; kbRenderIndex(); }
+  });
+  var s = document.getElementById('kbSearch'), tmr;
+  s.addEventListener('input', function(){ clearTimeout(tmr); var v=s.value; tmr=setTimeout(function(){kbSearch(v);},200); });
+})();
+
 </script>
 </body>
 </html>
